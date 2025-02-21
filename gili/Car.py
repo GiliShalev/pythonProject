@@ -9,7 +9,7 @@ class Car1:
         print(self.x)
 
 class Car:
-    d = 88
+    d = 885
 
     @staticmethod
     def static_func():
