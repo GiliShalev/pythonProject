@@ -73,6 +73,9 @@ class MyTesting(BaseSelenium):
             if "Phones" in cat.text:
                 print("IN")
 
+        for i in range(0, len(categories), 1):
+            print("Index loop:", categories[i].text)
+
         time.sleep(3)
     def t9(self):
         # Page 28 - Broken link
@@ -120,6 +123,9 @@ class MyTesting(BaseSelenium):
         time.sleep(2)
         compound.select_by_index(0)
         print("Option 1 is:", compound.options[0].text)
+        print("Option 1 is: " + compound.options[0].text)
+        print(f"Option 1 is: {compound.options[0].text}")
+        print("Option 1 is: {compound.options[0].text}")
         time.sleep(3)
     def t15(self):
         driver = super().selenium_init("http://advantageonlineshopping.com/#/")
@@ -160,7 +166,7 @@ myTesting = MyTesting()
 #myTesting.t5()
 #myTesting.t6()
 #myTesting.t7()
-#myTesting.t8()
+myTesting.t8()
 #myTesting.t9()
 #myTesting.t10()
 #myTesting.t11()
@@ -168,5 +174,5 @@ myTesting = MyTesting()
 #myTesting.t13()
 #myTesting.t14()
 #myTesting.t15()
-myTesting.t16()
+#myTesting.t16()
 myTesting.test_end()
