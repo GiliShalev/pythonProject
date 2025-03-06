@@ -83,7 +83,7 @@ class MyTesting(BaseSelenium):
     def t10(self):
         driver = self.t4()
         items = driver.find_elements(By.CLASS_NAME, "inventory_item_price")
-        amount = 0;
+        amount = 0
         for item in items:
             print(item.text)
             amount = amount + float(item.text.replace("$", ""))
