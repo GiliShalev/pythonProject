@@ -3,6 +3,7 @@ import unittest
 
 from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.select import Select
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium import webdriver
@@ -24,6 +25,18 @@ class Sanity(unittest.TestCase):
         driver = self.driver
         driver.get('https://google.com')
 
+        # search_field = driver.find_element(By.NAME, 'xxx')
+        # search_field = driver.find_element(By.ID, 'xxx')
+        # search_field = driver.find_element(By.LINK_TEXT, 'Gmail')
+        # search_field = driver.find_element(By.PARTIAL_LINK_TEXT, 'Gmail')
+        # search_field = driver.find_element(By.CLASS_NAME, 'gb_X')
+        # search_field = driver.find_element(By.TAG_NAME, 'input')
+        # search_field = driver.find_element(By.XPATH, 'input')
+        # search_field = driver.find_element(By.CSS_SELECTOR, 'input')
+
+
+
+
         search_field = driver.find_element(By.CLASS_NAME, 'gLFyf')
         val = search_field.get_attribute('id')
         print("ID is " + val)
@@ -37,9 +50,6 @@ class Sanity(unittest.TestCase):
 
     def test_google_1(self):
         print("Test2")
-
-    def tearDown(self):
-        print('TearDown')
 
     def test_tools_qa(self):
         self.driver.get("https://demoqa.com/login")
@@ -71,6 +81,18 @@ class Sanity(unittest.TestCase):
             # Print like that: Link 1: text... (Only for links that has text)
             print(link.get_attribute('href'))
             print(link.text)
+
+    def test_xyz_bank(self):
+        self.driver.get("https://www.globalsqa.com/angularJs-protractor/BankingProject/#/customer")
+        sel = self.driver.find_element(By.NAME, 'userSelect')
+        select = Select(sel)
+        select.select_by_index(0)
+        select.select_by_value('2')
+        select.select_by_visible_text("Harry Potter")
+        time.sleep(3)
+
+    def tearDown(self):
+        print('TearDown')
 
     @classmethod
     def tearDownClass(cls):

@@ -27,6 +27,10 @@ class BaseTest(unittest.TestCase):
     def test_blaze(self):
         driver = self.driver
         driver.get("https://www.demoblaze.com/")
+
+        print(driver.current_url)
+        print(driver.title)
+
         all_cat = driver.find_elements(By.ID, "itemc")
         print("Num of cat: " + str(len(all_cat)))
         phone_exist = False
@@ -143,7 +147,7 @@ class BaseTest(unittest.TestCase):
         driver.get("https://demo.guru99.com/test/newtours/#google_vignette")
         gen_funcs = GenFuncs(driver)
         gen_funcs.select_category("Flights")
-        time.sleep(3)
+        time.sleep(1)
 
         # Handle radio button
         trip_type = driver.find_elements(By.NAME, "tripType")
@@ -152,16 +156,31 @@ class BaseTest(unittest.TestCase):
                 trip.click()
                 break
 
-        time.sleep(3)
+        time.sleep(1)
 
         # Combo box
-        num_of_pass = driver.find_element(By.NAME, 'passCount')
+        num_of_pass = driver.find_element(By.XPATH, "*[@name='passCount']")
         select_num_of_pass = Select(num_of_pass)
         select_num_of_pass.select_by_visible_text("3")
         time.sleep(3)
 
+        cont = driver.find_element(By.NAME, 'findFlights')
+        cont.click()
+        time.sleep(3)
 
+        msg = driver.find_element(By.XPATH, "//font[@size='4']")
+        print(msg.text)
 
-
+        # driver.find_element(By.CSS_SELECTOR, "button[id=aaa][class='btn btn-default']")
+        # driver.find_element(By.XPATH, "//button[@id='aaa' and @class='btn btn-default']")
+        #
+        # driver.find_element(By.CSS_SELECTOR, "div[id=sss] span[1] > input")
+        # driver.find_element(By.XPATH, "//div//span[@name='fff']/input")
+        #
+        # driver.find_element(By.CSS_SELECTOR, "button[id=aaa]")
+        # driver.find_element(By.CSS_SELECTOR, "div > button#aaa")
+        #
+        # driver.find_element(By.CSS_SELECTOR, "button[class=aaa]")
+        # driver.find_element(By.CSS_SELECTOR, "div > button.aaa")
 
 
